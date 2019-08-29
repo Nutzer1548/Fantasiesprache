@@ -11,7 +11,7 @@ Hinweis:
 Dieses Projekt soll hauptsächlich unterhaltend sein. Es generiert keine echten
 Sprachen mit eigener Grammatik. Es kann in (Rollen-)Spielen verwendet werden
 um schnell und unproblematisch Sätze in einer fremden Sprache zu erzeugen,
-welche eine nachvollziehbare Bedeutung haben.
+welche eine konsistente/nachvollziehbare Bedeutung haben.
 Die Fantasiesprache ist _KEINE SICHERE VERSCHLÜSSELUNG_!
 
 

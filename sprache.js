@@ -35,11 +35,16 @@ var STABEN={
 
 
 var staben={
-	v:"aeiouy".split(""),
-//	w:"hlnrjsw".split(""),
-	w:"hlrjsw".split(""),
-	h:"bdfgknmptz".split(""),
-//	h:"bcdfgkmpqtvxz"
+	//v:"aeiouy".split(""),
+	v:"a,e,i,o,u,au,eu,ei,ä,ö,ü,y".split(","),
+//w:"hlnrjsw".split(""),
+//	w:"hlrjsw".split(""),
+//	h:"bdfgknmptz".split(""),
+//h:"bcdfgkmpqtvxz"
+	kv:"bcdfghjklmnpqrstvw".split(""),
+	kn:"bcdfghklmnpqrstxz".split(""),
+	w:"hlrjswmn".split(""),
+	h:"bcdfgkpqvtzx".split(""),
 	ende:0
 };
 
@@ -141,7 +146,7 @@ function genSilben(){
 	mischen(staben.w);
 	mischen(staben.h);
 	// Silben erstellen
-	var silbentotal=500;
+	var silbentotal=150;
 	var sil=[];
 	for(var i=0; i<silbentotal; i++){
 		var k=rand(100);
@@ -151,14 +156,17 @@ function genSilben(){
 		else if(k<(kvor[0]+kvor[1]+kvor[2]+kvor[3])) t=rand(staben.wh);
 		else t="";
 
+		if(k<75) t=rand(staben.kv);
+
 		t+=rand(staben.v);
 
 		k=rand(100);
-		if(k<knach[0]) t+=rand(staben.h);
+		if(k<50) t+=rand(staben.kn);
+		/*if(k<knach[0]) t+=rand(staben.h);
 		else if(k<(knach[0]+knach[1])) t+=rand(staben.hw);
 		else if(k<(knach[0]+knach[1]+knach[2])) t+=rand(staben.w);
 		else if(k<(knach[0]+knach[1]+knach[2]+knach[3])) t+=rand(staben.wh);
-		//else t+="";
+		else t+="";// */
 		sil.push(t);
 	}// end for i
 	silben=sil;
@@ -205,7 +213,7 @@ function uebersetze(satz){
 
 function generiereSprache(){
 	// Staben zurücksetzen
-	staben.v=STABEN.v.slice();
+//	staben.v=STABEN.v.slice();
 	staben.w=STABEN.w.slice();
 	staben.h=STABEN.h.slice();
 	
