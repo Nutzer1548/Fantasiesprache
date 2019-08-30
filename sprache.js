@@ -133,6 +133,7 @@ function init(){
 var startSeed=0;
 
 var silben=[];
+let silben_p={};
 
 function silbenAnzahl(wort){
 	var s=0;
@@ -255,7 +256,7 @@ function uebersetze(satz){
 
 function generiereSprache(){
 	// Silben renerieren
-	genSilben();
+	silben_p=genSilben();
 
 	// Silben anzeigen
 	$("silben").innerHTML="Silben:<br/>"+silben;
