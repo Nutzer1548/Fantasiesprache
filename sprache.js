@@ -96,18 +96,29 @@ var STABEN={
 
 var staben={
 	//v:"aeiouy".split(""),
-	v:"a,e,i,o,u,au,eu,ei,ä,ö,ü,y".split(","),
+	v:"a,e,i,o,u,au,eu,ei,ä,ö,ü,y,äu".split(","),
 //	vp:"5.577,16.04,9.011,2.312,3.68,4.4543,1.7495,1,".split(","),
 //w:"hlnrjsw".split(""),
 //	w:"hlrjsw".split(""),
 //	h:"bdfgknmptz".split(""),
 //h:"bcdfgkmpqtvxz"
-	kv:"bcdfghjklmnpqrstvw".split(""),
-	kn:"bcdfghklmnpqrstxz".split(""),
+	kv:"bcdfghjklmnpqrstvw".split("").concat("sch,qu".split(",")),
+	kn:"bcdfghklmnpqrstxz".split("").concat("sch,ch".split(",")),
 	w:"hlrjswmn".split(""),
 	h:"bcdfgkpqvtzx".split(""),
 	ende:0
 };
+
+/* Ermittelt zu einem array aus lauten, die jeweilige Wahrscheinlichkeit,
+** normalisiert diese und gibt sie zurück*/
+function genWahrscheinlichkeit(elemente){
+	let p=[];
+	for(let i=0; i<elemente.length; i++){
+		p[i]=laute[elemente[i]];
+	}
+	p.normalize();
+	return p;
+}// end #genWahrscheinlichkeit()
 
 // [h,hw,w,wh,-]
 // 
