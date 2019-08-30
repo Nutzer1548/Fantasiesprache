@@ -123,8 +123,8 @@ function genWahrscheinlichkeit(elemente){
 
 function init(){
 	staben.v_p=genWahrscheinlichkeit(staben.v);
-	staben.kv_p=genWahrscheinlichkeit(staben.v);
-	staben.kn_p=genWahrscheinlichkeit(staben.v);
+	staben.kv_p=genWahrscheinlichkeit(staben.kv);
+	staben.kn_p=genWahrscheinlichkeit(staben.kn);
 }// end #init()
 
 
