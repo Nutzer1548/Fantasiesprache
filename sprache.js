@@ -55,7 +55,7 @@ let laute={
 	'ch':9584, //'ch':19146, // ch-sch
 	'd':17539,
 	'e':91154, //'e':104462,// e-ei-eu
-	'ei':11479,
+	'ei':11479, // auch 'ie'!
 	'eu':1829,  
 	'f':16894,
 	'g':28040,
@@ -300,3 +300,4 @@ function bnZufallClick(){
 	generiereSprache();
 }
 
+init();
