@@ -23,6 +23,14 @@ Array.prototype.normalize=function(){
 	for(let i=0; i<this.length; i++) this[i]/=sum;
 }
 
+/* wie Array.prototype.normalize(), nur für Objects */
+function normalizeObject(obj){
+	let k=Object.keys(obj);
+	let sum=0;
+	for(let i=0; i<k.length; i++) sum+=obj[k[i]];
+	for(let i=0; i<k.length; i++) obj[k[i]]/=sum;
+}
+
 Math.seed=1256;
 Math.random=function(){
 	Math.seed=(Math.seed*9301+49297)%233280;
@@ -75,6 +83,7 @@ let laute={
 	'z':9810
 };
 //laute.normalize();
+normalizeObject(laute);
 
 var STABEN={
 	v:"aeiouy".split(""),
