@@ -1,3 +1,4 @@
+"use strict";
 /* Wörter aus Silben:
  * [einsilbig, 2-silbig, 3-silbig, ...]
  * silbenGruppen=[20,40,30,9,1]
