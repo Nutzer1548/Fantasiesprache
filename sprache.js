@@ -130,28 +130,6 @@ function init(){
 // [h,hw,w,wh,-]
 // 
 var startSeed=0;
-var kvor=[40,10,20,0,20];
-var knach=[30,0,0,10,50];
-//var kvor=[35,5,20,0,40];
-//var knach=[80,0,0,15,5];
-/*
- * Silben-Code:
- * a:x,b,c:z
- * a: Typ des Vor-Konsonanten (0..3=h,hw,w,wh, 4=(leer))
- * x: Index des Vor-Konsonanten
- * b: Index des Vokals
- * c: Typ des Nach-Konsonanten (0..3=h,hw,w,wh, 4=(leer))
- * z: Index des Nach-Konsonanten
- * 
- * Durchnummerierung:
- * a:x=5*hw
- * b=6
- * c:z=5*hw
- * Index=(Anzahl Vor-Konsonanten+1)*(Anzahl Vokale)+
- * 
- * 2 3 5
- * 
- */
 
 var silben=[];
 
@@ -229,29 +207,17 @@ function genSilben(){
 	var sil=[];
 	for(var i=0; i<silbentotal; i++){
 		var k=rand(100);
-		if(k<kvor[0]) t=rand(staben.h);
-		else if(k<(kvor[0]+kvor[1])) t=rand(staben.hw);
-		else if(k<(kvor[0]+kvor[1]+kvor[2])) t=rand(staben.w);
-		else if(k<(kvor[0]+kvor[1]+kvor[2]+kvor[3])) t=rand(staben.wh);
-		else t="";
 
 		if(k<75) t=rand(staben.kv);
+		else t="";
 
 		t+=rand(staben.v);
 
 		k=rand(100);
 		if(k<50) t+=rand(staben.kn);
-		/*if(k<knach[0]) t+=rand(staben.h);
-		else if(k<(knach[0]+knach[1])) t+=rand(staben.hw);
-		else if(k<(knach[0]+knach[1]+knach[2])) t+=rand(staben.w);
-		else if(k<(knach[0]+knach[1]+knach[2]+knach[3])) t+=rand(staben.wh);
-		else t+="";// */
 		sil.push(t);
 	}// end for i
 	silben=sil;
-//h,hw,w,wh,-
-//var kvor=[35,35,20,0,10];
-//var knach=[80,0,0,15,5];
 
 }// end #genSilben()
 
@@ -291,18 +257,8 @@ function uebersetze(satz){
 
 
 function generiereSprache(){
-	// Staben zurücksetzen
-//	staben.v=STABEN.v.slice();
-	staben.w=STABEN.w.slice();
-	staben.h=STABEN.h.slice();
-	
 	// Silben renerieren
 	genSilben();
-/*	mischen(staben.hw);
-	mischen(staben.wh);
-	mischen(staben.v);
-	mischen(staben.w);
-	mischen(staben.h);// */
 
 	// Silben anzeigen
 	$("silben").innerHTML="Silben:<br/>"+silben;
