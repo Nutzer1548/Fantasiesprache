@@ -177,49 +177,45 @@ function mischen(liste){
 }// end #mischen()
 
 function genSilben(){
-	var t;
-	// Konsonantenkombinationen erstellen
-	// hw
-	var hw=[];
-	for(var i=0; i<staben.h.length; i++){
-		t=staben.h[i];
-		for(var j=0; j<staben.w.length; j++){
-			hw.push(t+staben.w[j]);
-		}
-	}
-	staben.hw=hw;
-	// wh
-	var wh=[];
-	for(var i=0; i<staben.w.length; i++){
-		t=staben.w[i];
-		for(var j=0; j<staben.h.length; j++){
-			wh.push(t+staben.h[j]);
-		}
-	}
-	staben.wh=wh;
-	// Mischen
-	mischen(staben.hw);
-	mischen(staben.wh);
-	mischen(staben.v);
-	mischen(staben.w);
-	mischen(staben.h);
-	// Silben erstellen
-	var silbentotal=150;
-	var sil=[];
-	for(var i=0; i<silbentotal; i++){
-		var k=rand(100);
+	let sil=[]; // neu erstellte Silben
+	let silben_obj={}; // neu erstellte Silben mit Wahrscheinlichkeit
 
-		if(k<75) t=rand(staben.kv);
-		else t="";
+	let kvor=0.75;
+	let knach=0.4;
+	let konsonant_vor, konsonant_vor_p;
+	let konsonant_nach, konsonant_nach_p;
+	for(let v=0; v<staben.v.length; v++){// alle vokale durchgehen
+		let vokal=staben.v[v];
+		let vokal_p=staben.v_p[v];
+		for(let kv_i=0; kv_i<=staben.kv.length; kv_i++){// alle Konsonanten _vor_ einem Vokal
+			if(kv_i<staben.kv.length){
+				konsonant_vor=staben.kv[kv_i];
+				konsonant_vor_p=kvor*staben.kv_p[kv_i];
+			}else{
+				konsonant_vor='';
+				konsonant_vor_p=1-kvor;
+			}
+if(Number.isNaN(konsonant_vor_p)) console.log("kv_i"+kv_i);
+			for(let kn_i=0; kn_i<=staben.kn.length; kn_i++){// alle Konsonanten _nach_ einem Vokal
+				if(kn_i<staben.kn.length){
+					konsonant_nach=staben.kn[kn_i];
+					konsonant_nach_p=knach*staben.kn_p[kn_i];
+				}else{
+					konsonant_nach='';
+					konsonant_nach_p=1-knach;
+				}
 
-		t+=rand(staben.v);
+				let silbe=konsonant_vor+vokal+konsonant_nach;
+				let p=konsonant_vor_p*vokal_p*konsonant_nach_p;
+				sil.push(silbe);
+				silben_obj[silbe]=p;
+			}// end for kn_i
+		}// end for kv_i
 
-		k=rand(100);
-		if(k<50) t+=rand(staben.kn);
-		sil.push(t);
-	}// end for i
-	silben=sil;
-
+	}// end v
+	normalizeObject(silben_obj);
+	silben=sil; // zuweisen an globale Silben
+	return silben_obj;
 }// end #genSilben()
 
 function wortsaat(wort){
