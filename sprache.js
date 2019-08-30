@@ -34,6 +34,48 @@ function rand(n){
 	return n[Math.floor(Math.random()*n.length)];
 }
 
+/* Alle Buchstaben/-kombinationen die verwendet werden können. Dazu jeweils
+ihre Erscheinungshäufigkeit. */
+let laute={
+	'a':42655, //'a':48381, // a-au
+	'au':5726,
+	'ä':4845, //'ä':5363, // ä-äu
+	'äu':518,
+	'b':18345,
+	'c':13628,  //'c':23212,// c-ch
+	'ch':9584, //'ch':19146, // ch-sch
+	'd':17539,
+	'e':91154, //'e':104462,// e-ei-eu
+	'ei':11479,
+	'eu':1829,  
+	'f':16894,
+	'g':28040,
+	'h':14801, //'h':33947,// h-ch
+	'i':41002, //'i':52481,// i-ei
+	'j':896,
+	'k':20199,
+	'l':38085,
+	'm':19863,
+	'n':62828,
+	'o':25641,
+	'ö':2035,
+	'p':14847,
+	'q':8,//'q':543, // q-qu
+	'qu':535,
+	'r':60991,
+	's':40369,//'s':49931, // s-sch
+	'sch':9562,
+	't':52291,
+	'u':22946, //'u':31554,// u-au-eu-qu-äu
+	'ü':4570,
+	'v':6771,
+	'w':8175,
+	'x':1069,
+	'y':1891,
+	'z':9810
+};
+//laute.normalize();
+
 var STABEN={
 	v:"aeiouy".split(""),
 //	w:"hlnrjsw".split(""),
@@ -43,10 +85,10 @@ var STABEN={
 	ende:0
 };
 
-
 var staben={
 	//v:"aeiouy".split(""),
 	v:"a,e,i,o,u,au,eu,ei,ä,ö,ü,y".split(","),
+//	vp:"5.577,16.04,9.011,2.312,3.68,4.4543,1.7495,1,".split(","),
 //w:"hlnrjsw".split(""),
 //	w:"hlrjsw".split(""),
 //	h:"bdfgknmptz".split(""),
