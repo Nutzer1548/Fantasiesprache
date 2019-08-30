@@ -109,7 +109,7 @@ var staben={
 	ende:0
 };
 
-/* Ermittelt zu einem array aus lauten, die jeweilige Wahrscheinlichkeit,
+/* Ermittelt zu einem Array aus Lauten, die jeweilige Wahrscheinlichkeit,
 ** normalisiert diese und gibt sie zurück*/
 function genWahrscheinlichkeit(elemente){
 	let p=[];
@@ -119,6 +119,13 @@ function genWahrscheinlichkeit(elemente){
 	p.normalize();
 	return p;
 }// end #genWahrscheinlichkeit()
+
+function init(){
+	staben.v_p=genWahrscheinlichkeit(staben.v);
+	staben.kv_p=genWahrscheinlichkeit(staben.v);
+	staben.kn_p=genWahrscheinlichkeit(staben.v);
+}// end #init()
+
 
 // [h,hw,w,wh,-]
 // 
