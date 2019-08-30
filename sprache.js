@@ -13,6 +13,16 @@ Array.prototype.toString=function(){
 	return t;
 }
 
+/* normalisiert ein Array. Nimmt ein, das Array besteht nur aus Zahlen und teilt
+jede Zahl durch die Summe aller Zahlen, so dass die Summe danach 1 ist.*/
+Array.prototype.normalize=function(){
+	let sum=0;
+	for(let i=0; i<this.length; i++){
+		sum+=this[i];
+	}
+	for(let i=0; i<this.length; i++) this[i]/=sum;
+}
+
 Math.seed=1256;
 Math.random=function(){
 	Math.seed=(Math.seed*9301+49297)%233280;
