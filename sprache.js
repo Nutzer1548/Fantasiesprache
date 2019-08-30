@@ -136,10 +136,10 @@ var silben=[];
 let silben_p={};
 
 function silbenAnzahl(wort){
-	var s=0;
-	vokal=false;
-	for(var i=0; i<wort.length; i++){
-		var p=staben.v.indexOf(wort.charAt(i));
+	let s=0;
+	let vokal=false;
+	for(let i=0; i<wort.length; i++){
+		let p=staben.v.indexOf(wort.charAt(i));
 		if(p<0 || vokal){
 			vokal=false;
 			continue;
