@@ -125,6 +125,8 @@ function init(){
 	staben.v_p=genWahrscheinlichkeit(staben.v);
 	staben.kv_p=genWahrscheinlichkeit(staben.kv);
 	staben.kn_p=genWahrscheinlichkeit(staben.kn);
+
+	generiereSprache();
 }// end #init()
 
 
@@ -287,14 +289,15 @@ function bnSaatClick(){
 	Math.seed=Number.parseInt($("saat").value);
 	startSeed=Math.seed;
 console.log(Math.seed);
-	generiereSprache();
+//	generiereSprache();
 }
 
 function bnZufallClick(){
 	Math.seed=rand(100000);
 	startSeed=Math.seed;
 	$("saat").value=Math.seed;
-	generiereSprache();
+//	generiereSprache();
 }
 
-init();
+document.addEventListener('DOMContentLoaded', init);
+//init();
