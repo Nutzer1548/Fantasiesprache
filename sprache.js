@@ -245,6 +245,7 @@ function demo(){
 
 function bnOkClick(){
 	var t=$("eingabe").value;
+	t=t.replace(/[^a-zA-Z0-9ßäöü ]/g,""); // Nur Worte, keine Interpunktion
 	t=uebersetze(t);
 	$("ausgabe").innerHTML+="<p>"+t+"</p>";
 }
