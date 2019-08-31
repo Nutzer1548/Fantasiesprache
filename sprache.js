@@ -344,10 +344,10 @@ function demo(){
 }
 
 function bnOkClick(){
-	var t=$("eingabe").value;
-	t=t.replace(/[^a-zA-Z0-9ßäöü ]/g,""); // Nur Worte, keine Interpunktion
-	t=uebersetze(t);
-	$("ausgabe").innerHTML+="<p>"+t+"</p>";
+	let inp=$("eingabe").value;
+	inp=inp.replace(/[^a-zA-Z0-9ßäöü ]/g,""); // Nur Worte, keine Interpunktion
+	let out=uebersetze(inp);
+	$("ausgabe").innerHTML="<p><span>"+inp+":</span>"+out+"</p>"+$("ausgabe").innerHTML;
 }
 
 function bnSaatClick(){
