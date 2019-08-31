@@ -32,11 +32,17 @@ function normalizeObject(obj){
 	for(let i=0; i<k.length; i++) obj[k[i]]/=sum;
 }
 
-Math.seed=1256;
+
+
+Math.seed=1234567890;
 Math.random=function(){
-	Math.seed=(Math.seed*9301+49297)%233280;
-	return Math.seed/233280.0;
+	// seed=(seed*a+c)%m
+	Math.seed=(Math.seed*9301+49307)%4294967296;
+	return Math.seed/4294967296;
+	//Math.seed=(Math.seed*9301+49297)%233280;
+	//return Math.seed/233280.0;
 }
+
 
 function rand(n){
 	if(typeof n==="number") return Math.floor(Math.random()*n);
