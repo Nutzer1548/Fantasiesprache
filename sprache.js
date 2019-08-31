@@ -316,7 +316,7 @@ function generiereSprache(){
 	silben_p=genSilben();
 
 	// Silben anzeigen
-	$("silben").innerHTML="Silben:<br/>"+silben;
+//	$("silben").innerHTML="Silben:<br/>"+silben;
 }// end #generiereSprache()
 
 function demo(){
