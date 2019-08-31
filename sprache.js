@@ -265,6 +265,14 @@ function findSmallestMaximum(needle, arr){
 	return low;
 }// end #findSmallestMaximum()
 
+function bitRollL(val,bits){
+	if(bits<1) return val;
+	bits%=32;
+	let mask=(0xffffffff << (32-bits));
+	let dropped=val&mask;
+	return ((val<<bits))|(dropped>>>(32-bits));
+}
+
 function wortsaat(wort){
 	var saat=0;
 	for(var i=0; i<wort.length; i++) saat+=wort.charCodeAt(i);
