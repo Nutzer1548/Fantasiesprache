@@ -274,17 +274,11 @@ function wortsaat(wort){
 function uebersetzeWort(wort){
 	var silbzahl=silbenAnzahl(wort);
 	Math.seed=wortsaat(wort)+startSeed;
-var a=[];
-a[0]=silbzahl;
 	silbzahl+=rand(3)-1;
-a[1]=silbzahl;
 	if(silbzahl<1) silbzahl=1;
 	else if(silbzahl>6) silbzahl=6;
-a[2]=silbzahl;
-a[3]=Math.seed;
-//console.log(a);
 	var t="";
-	while(silbzahl-->0) t+=rand(silben);
+	while(silbzahl-->0) t+=silben[findSmallestMaximum(Math.random(),silben_psum)];
 	return t;
 }// end #uebersetzeWort
 
