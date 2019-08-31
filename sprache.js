@@ -275,7 +275,10 @@ function bitRollL(val,bits){
 
 function wortsaat(wort){
 	var saat=0;
-	for(var i=0; i<wort.length; i++) saat+=wort.charCodeAt(i);
+//	for(var i=0; i<wort.length; i++) saat+=wort.charCodeAt(i);
+//	for(var i=0; i<wort.length; i++) saat=(saat<<4)+wort.charCodeAt(i);
+	for(var i=0; i<wort.length; i++) saat=bitRollL(saat,4)+wort.charCodeAt(i);
+	saat&=0x7fffffff;
 	return saat;
 }
 
