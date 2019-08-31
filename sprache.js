@@ -127,12 +127,22 @@ function genWahrscheinlichkeit(elemente){
 	return p;
 }// end #genWahrscheinlichkeit()
 
+
 function init(){
 	staben.v_p=genWahrscheinlichkeit(staben.v);
 	staben.kv_p=genWahrscheinlichkeit(staben.kv);
 	staben.kn_p=genWahrscheinlichkeit(staben.kn);
 
 	generiereSprache();
+
+	document.querySelector("#uebersetzer input").addEventListener('keypress',function(e){
+		if(e.code!=="Enter") return;
+		bnOkClick();
+		//document.querySelector("#uebersetzer input").select();
+		this.select();
+		//console.log(e.code);
+	});
+	//document.querySelector("#uebersetzer button").addEventListener('click',bnOkClick);
 }// end #init()
 
 
