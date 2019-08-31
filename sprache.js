@@ -329,20 +329,6 @@ function generiereSprache(){
 //	$("silben").innerHTML="Silben:<br/>"+silben;
 }// end #generiereSprache()
 
-function demo(){
-	generiereSprache();
-	//var p=genPermutation(10);
-	var t="";
-	t=uebersetze("Wer im Glashaus sitzt, sollte nicht mit Steinen werfen");
-	$("silben").innerHTML+="<hr>"+t;
-	t=uebersetze("Wer im Glashaus sitzt, sollte nicht mit Steinen werfen");
-	$("silben").innerHTML+="<hr>"+t;
-	t=uebersetze("Lichter vor dem Glashaus werfen Steine");
-	$("silben").innerHTML+="<hr>"+t;
-	
-	//+"<br/>"+silbenAnzahl("Hundehuette");
-}
-
 function bnOkClick(){
 	let inp=$("eingabe").value;
 	inp=inp.replace(/[^a-zA-Z0-9ßäöü ]/g,""); // Nur Worte, keine Interpunktion
