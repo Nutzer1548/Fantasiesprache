@@ -134,8 +134,9 @@ function init(){
 // 
 var startSeed=0;
 
-var silben=[];
-let silben_p={};
+let silben=[]; // Alle Silben
+let silben_psum=[]; // Aufaddierte Wahrscheinlichkeit aller Silben
+let silben_p={}; // Silbe mit jeweiliger Wahrscheinlichkeit
 
 function silbenAnzahl(wort){
 	let s=0;
@@ -217,7 +218,17 @@ if(Number.isNaN(konsonant_vor_p)) console.log("kv_i"+kv_i);
 
 	}// end v
 	normalizeObject(silben_obj);
-	silben=sil; // zuweisen an globale Silben
+	
+	// Wahrscheinlichkeiten aufaddieren
+	let p=[];
+	let p_aktuell=0;
+	for(let i=0; i<sil.length; i++){
+		p_aktuell+=silben_obj[sil[i]];
+		p.push(p_aktuell);
+	}
+
+	silben=sil; // Zuweisen an globale Silben
+	silben_psum=p; // Zuweisen an aufaddierte Wahrscheinlichkeit
 	return silben_obj;
 }// end #genSilben()
 
