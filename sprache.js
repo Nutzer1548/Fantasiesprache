@@ -232,6 +232,39 @@ if(Number.isNaN(konsonant_vor_p)) console.log("kv_i"+kv_i);
 	return silben_obj;
 }// end #genSilben()
 
+/* Findet im Array 'arr' den kleinsten Wert der gleich oder größer ist als
+   'needle' und liefert den Index zurück.
+   'arr' muss aufsteigend sortiert sein.
+   Fehlt 'needle' oder 'arr' oder ist 'arr' leer, oder
+   arr[arr.length-1]<needle wird -1 zurückgegeben. */
+function findSmallestMaximum(needle, arr){
+	if(typeof arr=="undefined" ||
+		typeof needle=="undefined") return -1;
+	if(arr.length==0) return -1;
+	if(arr[arr.length-1]<needle) return -1;
+	let high=arr.length-1;
+	let low=0;
+	while(low<high){
+		let mid=Number.parseInt(low+(high-low)/2);
+		if(mid==low){
+			if(low==high) break;
+			if((high-low)>1){
+				console.log("high-low="+(high-low));// <-- unerwarteter Fehler
+				return low;
+			}
+			if(arr[low]>needle) return low;
+			return high;
+		}
+		if(arr[mid]<needle){
+			low=mid;
+			continue;
+		}else if(needle==arr[mid]) return mid;
+		// arr[mid]>needle
+		high=mid;
+	}// end while
+	return low;
+}// end #findSmallestMaximum()
+
 function wortsaat(wort){
 	var saat=0;
 	for(var i=0; i<wort.length; i++) saat+=wort.charCodeAt(i);
