@@ -34,7 +34,8 @@ function normalizeObject(obj){
 
 
 
-Math.seed=1234567890;
+Math.seed=12345;
+let startSeed=Math.seed;
 Math.random=function(){
 	// seed=(seed*a+c)%m
 	Math.seed=(Math.seed*9301+49307)%4294967296;
@@ -146,9 +147,6 @@ function init(){
 }// end #init()
 
 
-// [h,hw,w,wh,-]
-// 
-var startSeed=0;
 
 let silben=[]; // Alle Silben
 let silben_psum=[]; // Aufaddierte Wahrscheinlichkeit aller Silben
@@ -310,7 +308,6 @@ function uebersetzeWort(wort){
 }// end #uebersetzeWort
 
 function uebersetze(satz){
-//console.log(satz);
 	var worte=satz.split(/[ ]/);
 	var satz="";
 	for(var i=0; i<worte.length; i++){
@@ -324,9 +321,6 @@ function uebersetze(satz){
 function generiereSprache(){
 	// Silben renerieren
 	silben_p=genSilben();
-
-	// Silben anzeigen
-//	$("silben").innerHTML="Silben:<br/>"+silben;
 }// end #generiereSprache()
 
 function bnOkClick(){
@@ -337,18 +331,15 @@ function bnOkClick(){
 }
 
 function bnSaatClick(){
-	Math.seed=Number.parseInt($("saat").value);
+	Math.seed=Number.parseInt(document.getElementById("saat").value);
 	startSeed=Math.seed;
-console.log(Math.seed);
-//	generiereSprache();
+	console.log(Math.seed);
 }
 
 function bnZufallClick(){
 	Math.seed=rand(100000);
 	startSeed=Math.seed;
-	$("saat").value=Math.seed;
-//	generiereSprache();
+	document.getElementById("saat").value=Math.seed;
 }
 
 document.addEventListener('DOMContentLoaded', init);
-//init();
